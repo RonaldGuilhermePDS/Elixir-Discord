@@ -7,6 +7,11 @@ defmodule ElixirDiscordWeb.Router do
 
   scope "/api", ElixirDiscordWeb do
     pipe_through :api
+
+    get "/users", ListUsersController, :index
+    post "/users", AddUserController, :index
+    put "/users", UpdateUserController, :index
+    delete "/users/:id", DeleteUserController, :index
   end
 
   # Enables LiveDashboard only for development

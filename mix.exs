@@ -42,7 +42,8 @@ defmodule ElixirDiscord.MixProject do
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
       {:mongodb, "~> 0.5.1"},
-      {:poolboy, "~> 1.5.1"}
+      {:poolboy, "~> 1.5.1"},
+      {:elixir_uuid, "~> 1.2"}
     ]
   end
 
