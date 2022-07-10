@@ -7,13 +7,15 @@ defmodule ElixirDiscord.Application do
 
   @impl true
   def start(_type, _args) do
+    import Supervisor.Spec
     children = [
       # Start the Telemetry supervisor
       ElixirDiscordWeb.Telemetry,
       # Start the PubSub system
       {Phoenix.PubSub, name: ElixirDiscord.PubSub},
       # Start the Endpoint (http/https)
-      ElixirDiscordWeb.Endpoint
+      ElixirDiscordWeb.Endpoint,
+      worker(Mongo, [[name: :mongo, url: "mongodb://localhost:27017/users", pool_size: 10]])
       # Start a worker by calling: ElixirDiscord.Worker.start_link(arg)
       # {ElixirDiscord.Worker, arg}
     ]
